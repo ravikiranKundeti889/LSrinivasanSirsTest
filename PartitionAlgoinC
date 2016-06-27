@@ -1,0 +1,36 @@
+void partition ( int a[],int size)
+{
+  if(size==1) return;
+  if(size<0) 
+  {
+    printf(" size negative ");
+    return;
+  }
+  if(a==0)
+  {
+    printf(" Input array empty ");
+    return;
+  }
+  else
+  {
+    int start=1,end=size-1;
+    while(start<end)
+    {
+      if(a[0]<a[start])
+      {
+        if(a[0]>a[end])
+        {
+          int temp = a[start];
+          a[start]=a[end];
+          a[end]=temp;
+          start++;
+          end--;
+        }
+        else
+          end--;
+      }
+      else
+        start++;
+    }
+  }
+}//end of partition
