@@ -4,7 +4,7 @@
 
 typedef void* datapointer;
 int tos=0;
-int localSize=0;
+int localSize;
 int value;
 datapointer a[100];
 char bchar[100];
@@ -13,13 +13,13 @@ void createStack(int size,unsigned char t)
 {
 	printf(" Inside Create Stack with %d\n",t);
 	switch(t){
-		case 49:	
+		case 48:	
 			printf("char case matched\n");			
 			a[0] = (void*)calloc(size,sizeof(bchar));
 			printf("Allocated memory \n");
 			localSize = size;
 			break;
-		case 50:
+		case 49:
 			//printf("int case matched\n");	
 			a[0] = (void*)calloc(size,sizeof(bint));
 			//printf("Allocated memory \n");
@@ -30,12 +30,13 @@ void createStack(int size,unsigned char t)
 	}
 }
 
-void push(long*value,unsigned char t1)
+int push(long value,unsigned char t1)
 {
 	//printf("inside push function\n");
 	void *temp;
 	int i=0;
-	if(tos == localSize)	{ printf("stack full\n");return;}
+	if(tos==localSize)	{ printf("stack full\n");return 1;}
+	else if(value==-1) { return -1;}
 	else 
 	{
 		switch(t1)
@@ -60,20 +61,22 @@ void push(long*value,unsigned char t1)
 		tos++;
 
 	}
-	return;	
+	return 1;	
 }
-long* pop(unsigned char t)
+long pop(char t)
 {
 	if(tos==0) { printf("stack empty\n"); return -1;}
 	tos--;
 	switch(t)
 		{
-			case '0':	
+			case '0':
+				if(tos>0)	
+				printf("stack not empty%c\n",bchar[tos]);
 				return bchar[tos];
-				break;
 			case '1':
+				if(tos>0)	
+				printf("stack not empty%d\n",bint[tos]);	
 				return bint[tos];
-				break;
 		}
 
 }

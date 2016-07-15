@@ -11,7 +11,9 @@ node* createLinkedList(int size)
 	node* p1 = head;
 	while(i<=(size-2))
 	{
-		p->mydata.intdata = 10;
+		p->mydata.coefficient = i % (size-1);
+		if(rand() % 2==0);		
+			p->mydata.degree = i % (size-1);
 		p->next = (node* )malloc(sizeof(node));
 		p=p->next;
 		i++;
@@ -29,7 +31,7 @@ void printList()
 		p=p->next;
 	}
 }
-node* add(node *a)
+node* add(node *a,node* head)
 {
 	node* p = head;
 	while((p->next)!=0)

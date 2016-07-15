@@ -10,7 +10,7 @@
 			char chardata;
 			int intdata;
 			long longData;
-		} mydata;
+		}mydata;
 		struct Node *next;
 	}node;	
 
